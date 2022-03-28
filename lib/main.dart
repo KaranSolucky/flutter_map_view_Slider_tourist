@@ -1,4 +1,5 @@
 import 'package:animate_markers/ui/dash.dart';
+import 'package:animate_markers/ui/drawer.dart';
 import 'package:flutter/material.dart';
 import 'tools/tools.dart';
 import 'ui/mapScreen.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainMapScreen(),
+      home: MainScreen(),
     );
   }
 }

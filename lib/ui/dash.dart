@@ -24,64 +24,67 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   toggleMenu([bool end = false]) {
-    if (end) {
-      final _state = _endSideMenuKey.currentState;
-      if (_state.isOpened) {
-        _state.closeSideMenu();
-      } else {
-        _state.openSideMenu();
-      }
+    // if (end) {
+    //   final _state = _endSideMenuKey.currentState;
+    //   if (_state.isOpened) {
+    //     _state.closeSideMenu();
+    //   } else {
+    //     _state.openSideMenu();
+    //   }
+    // } else
+
+    final _state = _sideMenuKey.currentState;
+    if (_state.isOpened) {
+      _state.closeSideMenu();
     } else {
-      final _state = _sideMenuKey.currentState;
-      if (_state.isOpened) {
-        _state.closeSideMenu();
-      } else {
-        _state.openSideMenu();
-      }
+      _state.openSideMenu();
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return SideMenu(
-      key: _endSideMenuKey,
-      inverse: true, // end side menu
-      background: Colors.green[700],
-      type: SideMenuType.slideNRotate,
-      menu: Padding(
-        padding: const EdgeInsets.only(left: 25.0),
-        child: buildMenu(),
-      ),
-      onChange: (_isOpened) {
-        setState(() => isOpened = _isOpened);
-      },
-      child: SideMenu(
         key: _sideMenuKey,
-        menu: buildMenu(),
-        type: SideMenuType.slideNRotate,
+        inverse: true, // end side menu
+        background: Colors.amber,
+        type: SideMenuType.shrikNRotate,
+        menu: Padding(
+          padding: const EdgeInsets.only(left: 25.0),
+          child: buildMenu(),
+        ),
         onChange: (_isOpened) {
           setState(() => isOpened = _isOpened);
         },
-        child: IgnorePointer(
-          ignoring: isOpened,
-          child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              leading: IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () => toggleMenu(),
-              ),
-              actions: [
-                IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () => toggleMenu(true),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+        child: Scaffold(
+          appBar: AppBar(),
+        ));
+    //   SideMenu(
+    //     key: _sideMenuKey,
+    //     menu: buildMenu(),
+    //     type: SideMenuType.slideNRotate,
+    //     onChange: (_isOpened) {
+    //       setState(() => isOpened = _isOpened);
+    //     },
+    //     child: IgnorePointer(
+    //       ignoring: isOpened,
+    //       child: Scaffold(
+    //         appBar: AppBar(
+    //           centerTitle: true,
+    //           leading: IconButton(
+    //             icon: const Icon(Icons.menu),
+    //             onPressed: () => toggleMenu(),
+    //           ),
+    //           // actions: [
+    //           //   IconButton(
+    //           //     icon: const Icon(Icons.menu),
+    //           //     onPressed: () => toggleMenu(true),
+    //           //   )
+    //           // ],
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 
   Widget buildMenu() {
